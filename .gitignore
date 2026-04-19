@@ -1,0 +1,16 @@
+# Configuración local con secrets
+config/settings.env
+
+# Logs generados en runtime
+logs/*.log
+
+# Cola de tareas runtime
+queue/tasks.queue
+queue/*.lock
+
+# Binario compilado
+bin/mcp-executor
+
+# Archivos temporales
+*.tmp
+*.pid
