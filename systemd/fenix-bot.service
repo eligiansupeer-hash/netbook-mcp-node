@@ -1,0 +1,17 @@
+[Unit]
+Description=Fenix Telegram Bot
+After=network-online.target
+
+[Service]
+Type=simple
+User=eli
+ExecStart=/usr/local/bin/fenix-bot
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=fenix-bot
+MemoryMax=300M
+
+[Install]
+WantedBy=multi-user.target
