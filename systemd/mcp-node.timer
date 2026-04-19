@@ -1,0 +1,17 @@
+[Unit]
+Description=MCP Node Poller Timer — cada 20 segundos
+Requires=mcp-node.service
+
+[Timer]
+# Ejecutar cada 20 segundos
+OnBootSec=30
+OnUnitActiveSec=20s
+
+# Si el sistema estuvo apagado, ejecutar al arrancar
+Persistent=true
+
+# Randomizar hasta 5 segundos para evitar picos exactos
+RandomizedDelaySec=5
+
+[Install]
+WantedBy=timers.target

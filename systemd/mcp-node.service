@@ -1,0 +1,28 @@
+[Unit]
+Description=MCP Node Poller — Netbook Linux Executor
+Documentation=https://github.com/eligiansupeer-hash/netbook-mcp-node
+After=network-online.target
+Wants=network-online.target
+StartLimitIntervalSec=60
+StartLimitBurst=3
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/mcp-poller
+User=RUNTIME_USER
+EnvironmentFile=-/etc/mcp-node/settings.env
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=mcp-node
+
+# Protección de recursos
+MemoryMax=512M
+CPUQuota=80%
+TimeoutStartSec=150
+KillMode=process
+
+# No reintentar si falla (el timer se encarga del siguiente ciclo)
+Restart=no
+
+[Install]
+WantedBy=multi-user.target
